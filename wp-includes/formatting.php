@@ -1595,7 +1595,7 @@ function utf8_uri_encode( $utf8_string, $length = 0, $encode_ascii_characters = 
 function remove_accents( $text, $locale = '' ) {
 
 	if( null === $text ) return $text;
-	
+
 	if ( ! preg_match( '/[\x80-\xff]/', $text ) ) {
 		return $text;
 	}
@@ -2262,6 +2262,7 @@ function sanitize_title_for_query( $title ) {
  * @return string The sanitized title.
  */
 function sanitize_title_with_dashes( $title, $raw_title = '', $context = 'display' ) {
+	if( null === $title ) return $title;
 	$title = strip_tags( $title );
 	// Preserve escaped octets.
 	$title = preg_replace( '|%([a-fA-F0-9][a-fA-F0-9])|', '---$1---', $title );
